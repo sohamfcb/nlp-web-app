@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Named Entity Recognition (NER)</title>
+</head>
+<body>
+
+    <form action="/perform_ner" method="post">
+        <label>Write your text here</label><br><br>
+        <textarea name="ner_text" required></textarea><br><br>
+        <input type="submit" value="Perform NER">
+    </form>
+
+    {% if response %}
+        {% for i in response['entities']: %}
+            <p>{{ i['name']+' --> '+i['category'] }}</p>
+        {% endfor %}
+
+    {% endif %}
+
+</body>
+</html>
